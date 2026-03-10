@@ -1,0 +1,22 @@
+// Project 1: Smart Lighting System
+int sensorPin = A0; 
+int ledPin = 13;    
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int lightLevel = analogRead(sensorPin); 
+  Serial.print("Light Level: ");
+  Serial.println(lightLevel);
+
+  // Threshold for LDR Module (Adjust 500 if needed)
+  if (lightLevel > 500) { 
+    digitalWrite(ledPin, HIGH); 
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+  delay(100);
+}
