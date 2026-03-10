@@ -1,0 +1,27 @@
+// Project 2: Smart Motion Detection System
+int pirPin = 2;    // PIR Sensor Output connected to Digital Pin 2
+int ledPin = 13;   // LED connected to Pin 13
+int buzzerPin = 8; // Buzzer connected to Pin 8
+
+void setup() {
+  pinMode(pirPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int motion = digitalRead(pirPin); // Read motion (1 = Motion, 0 = No Motion)
+
+  if (motion == HIGH) {
+    Serial.println("Motion Detected! Alarm ON");
+    digitalWrite(ledPin, HIGH);
+    digitalWrite(buzzerPin, HIGH);
+    delay(2000); // Alarm stays on for 2 seconds
+  } else {
+    Serial.println("No Motion");
+    digitalWrite(ledPin, LOW);
+    digitalWrite(buzzerPin, LOW);
+  }
+  delay(100);
+}
